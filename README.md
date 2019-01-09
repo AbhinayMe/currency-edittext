@@ -1,14 +1,13 @@
 # Currency-Edittext
  A Custom EditText implementation that allows formatting of currency-based numeric inputs.
 
-![Alt text](/demo_1.gif "Currency-Edittext Input Demo")
-
+![Alt text](/samplegif.gif "Currency-Edittext Input Demo")
 
 
 ## Usage
 
 ```
-compile 'me.abhinay.input:Currency-EditText:1.0.0'
+implementation 'me.abhinay.input:Currency-EditText:1.0.0'
 ```
 
 ## Implementation Sample
