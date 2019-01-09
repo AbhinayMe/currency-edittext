@@ -8,7 +8,7 @@
 ## Usage
 
 ```
-compile 'com.github.dinukapj:ATM-EditText:1.7.3'
+compile 'me.abhinay.input:Currency-EditText:1.0.0'
 ```
 
 ## Implementation Sample
@@ -16,26 +16,27 @@ compile 'com.github.dinukapj:ATM-EditText:1.7.3'
 XML
 
 ```
-<com.earthling.atminput.ATMEditText
+<me.abhinay.input.CurrencyEditText
         android:id="@+id/etInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Type value"
         android:inputType="number"
-        android:hint="Type value"/>
+        android:textSize="24sp" />
 ```
 
 Code
 
 ```
-ATMEditText etInput;
+CurrencyEditText etInput;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    etInput = (ATMEditText) findViewById(R.id.etInput);
-    etInput.setCurrency(Currency.MALAYSIA);
+    etInput = (CurrencyEditText) findViewById(R.id.etInput);
+    etInput.setCurrency(Currency.USA);
     etInput.setDelimiter(false);
     etInput.setSpacing(false);
     etInput.setDecimals(true);
