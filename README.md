@@ -1,3 +1,5 @@
+[![](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/AbhinayMe/currency-edittext)
+
 # Currency-Edittext
  A Custom EditText implementation that allows formatting of currency-based numeric inputs.
 
