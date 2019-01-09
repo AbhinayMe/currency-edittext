@@ -8,7 +8,7 @@
 ## Usage
 
 ```
-compile 'me.abhinay.input:Currency-EditText:1.0.0'
+implementation 'me.abhinay.input:Currency-EditText:1.0.0'
 ```
 
 ## Implementation Sample
