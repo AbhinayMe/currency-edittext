@@ -15,6 +15,7 @@ ext {
 
     siteUrl = 'https://github.com/AbhinayMe/currency-edittext'
     gitUrl = 'https://github.com/AbhinayMe/currency-edittext.git'
+    gradleScriptUrl = 'https://github.com/AbhinayMe/JCenter-Gradle-Scripts'
 
     libraryVersion = '1.1'
 
