@@ -1,4 +1,4 @@
-[![](https://img.shields.io/github/release/qubyte/rubidium.svg)](https://github.com/AbhinayMe/currency-edittext)
+[ ![Download](https://api.bintray.com/packages/abhinayme/currency-edittext/me.abhinay.input/images/download.svg?version=1.1) ](https://bintray.com/abhinayme/currency-edittext/me.abhinay.input/1.1/link)
 
 # Currency-Edittext
  A Custom EditText implementation that allows formatting of currency-based numeric inputs.
