@@ -6,10 +6,23 @@
 ![Alt text](/samplegif.gif "Currency-Edittext Input Demo")
 
 
-## Usage
-
+## 💻 Installation
+Add this in your app's build.gradle file:
+```groovy
+dependencies {
+  implementation 'me.abhinay.input:currency-edittext:1.1'
+}
 ```
-implementation 'me.abhinay.input:Currency-EditText:1.0.0'
+
+Or add ClapFab as a new dependency inside your pom.xml
+
+```xml
+<dependency>
+  <groupId>me.abhinay.input</groupId>
+  <artifactId>currency-edittext</artifactId>
+  <version>1.1</version>
+  <type>pom</type>
+</dependency>
 ```
 
 ## Implementation Sample
