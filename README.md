@@ -1,5 +1,8 @@
-[ ![Download](https://api.bintray.com/packages/abhinayme/currency-edittext/me.abhinay.input/images/download.svg?version=1.1) ](https://bintray.com/abhinayme/currency-edittext/me.abhinay.input/1.1/link)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Currency--Edittext-yellow.svg?style=flat)](https://android-arsenal.com/details/1/7441)
+[![Download](https://api.bintray.com/packages/abhinayme/currency-edittext/me.abhinay.input/images/download.svg) ](https://bintray.com/abhinayme/currency-edittext/me.abhinay.input/_latestVersion)
+[![Build Status](https://travis-ci.org/AbhinayMe/currency-edittext.svg?branch=master)](https://travis-ci.org/AbhinayMe/currency-edittext)
+[![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Currency--Edittext-yellow.svg?style=flat)](https://android-arsenal.com/details/1/7448)
+
 
 
 # Currency-Edittext
