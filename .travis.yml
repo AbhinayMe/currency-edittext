@@ -1,36 +1,28 @@
 language: android
 jdk: oraclejdk8
-sudo: required
-
-before_install:
-  - yes | sdkmanager "platforms;android-28"
-  - yes | sdkmanager "sources;android-28"
-  - yes | sdkmanager "docs"
 
 android:
   components:
-    - tools
-    - platform-tools
     - build-tools-28.0.3
-    - android-28
+    - $ANDROID_TARGET
+    - sys-img-armeabi-v7a-$ANDROID_TARGET
     - extra-android-support
     - extra-android-m2repository
     - extra-google-m2repository
+
+env:
+  matrix:
+    - chmod +x gradlew
+    - ANDROID_TARGET=android-28  ANDROID_ABI=armeabi-v7a
+
 licenses:
   - '.+'
+
 before_script:
-  - chmod +x gradlew
+  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
+
 script:
   - ./gradlew build
-
-after_success:
-  - ./gradlew javadocRelease
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN
-  keep-history: true
-  local-dir: library/build/docs/javadoc/release
-  on:
-    branch: master
