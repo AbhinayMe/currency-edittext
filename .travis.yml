@@ -1,3 +1,6 @@
+
+language: android
+jdk: oraclejdk8
 # Use the Travis Container-Based Infrastructure
 sudo: false
 
