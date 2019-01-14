@@ -4,7 +4,7 @@ jdk: oraclejdk8
 android:
   components:
     - build-tools-28.0.3
-    - $ANDROID_TARGET
+    - android-28
     - sys-img-armeabi-v7a-$ANDROID_TARGET
     - extra-android-support
     - extra-android-m2repository
@@ -12,14 +12,14 @@ android:
 
 env:
   matrix:
-    - chmod +x gradlew
-    - ANDROID_TARGET=android-28  ANDROID_ABI=armeabi-v7a
+    - ANDROID_TARGET=android-28  ANDROID_ABI=x86_64
 
 licenses:
   - '.+'
 
 before_script:
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+  - chmod +x gradlew
+  - echo no | android create avd --force -n test -t android-28 --abi x86_64
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
