@@ -1,10 +1,11 @@
 package me.abhinay.input;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 import java.text.NumberFormat;
 import java.util.Locale;
