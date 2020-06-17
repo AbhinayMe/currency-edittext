@@ -118,9 +118,9 @@ public class CurrencyEditText extends AppCompatEditText {
     public double getCleanDoubleValue() {
         double value = 0.0;
         if (Decimals) {
-            value = Double.parseDouble(editText.getText().toString().replaceAll("[$,]", "").replaceAll(Currency, ""));
+            value = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(Currency, ""));
         } else {
-            String cleanString = editText.getText().toString().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
+            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
             try {
                 value = Double.parseDouble(cleanString);
             } catch (NumberFormatException e) {
@@ -133,10 +133,10 @@ public class CurrencyEditText extends AppCompatEditText {
     public int getCleanIntValue() {
         int value = 0;
         if (Decimals) {
-            double doubleValue = Double.parseDouble(editText.getText().toString().replaceAll("[$,]", "").replaceAll(Currency, ""));
+            double doubleValue = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(Currency, ""));
             value = (int) Math.round(doubleValue);
         } else {
-            String cleanString = editText.getText().toString().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
+            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
             try {
                 value = Integer.parseInt(cleanString);
             } catch (NumberFormatException e) {
