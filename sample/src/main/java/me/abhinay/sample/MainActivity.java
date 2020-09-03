@@ -5,11 +5,10 @@ package me.abhinay.sample;
  * Created by AbhinayMe on 01/01/2019.
  */
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import me.abhinay.input.CurrencyEditText;
