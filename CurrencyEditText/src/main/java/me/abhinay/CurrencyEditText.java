@@ -1,4 +1,4 @@
-package me.abhinay.input;
+package me.abhinay;
 
 import android.content.Context;
 import android.text.Editable;
@@ -6,6 +6,9 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 
 import androidx.appcompat.widget.AppCompatEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -19,34 +22,49 @@ public class CurrencyEditText extends AppCompatEditText {
     private String current = "";
     private CurrencyEditText editText = CurrencyEditText.this;
 
+    private Context mContext;
+
     //properties
-    private String Currency = "";
-    private String Separator = ",";
-    private Boolean Spacing = false;
-    private Boolean Delimiter = false;
-    private Boolean Decimals = true;
+    private String currency = "";
+    private String separator = ",";
+    private Boolean spacing = false;
+    private Boolean delimiter = false;
+    private Boolean decimals = true;
 
     public CurrencyEditText(Context context) {
         super(context);
-        init();
+        init(context, null);
     }
 
     public CurrencyEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context, attrs);
     }
 
     public CurrencyEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context, attrs);
     }
 
-    public void init() {
+    private void init(Context context, AttributeSet attrs) {
+        init(context, attrs, null, null, null, null, null);
+    }
 
+    private void init(Context context, AttributeSet attrs, String currency, String separator, Boolean spacing, Boolean delimiter, Boolean decimals) {
+        this.mContext = context;
+        this.currency = currency;
+        this.separator = separator;
+        this.spacing = spacing;
+        this.delimiter = delimiter;
+        this.decimals = decimals;
+
+        initByAttributes(context, attrs);
+    }
+
+    private void initByAttributes(Context context, AttributeSet attrs) {
         this.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -54,23 +72,23 @@ public class CurrencyEditText extends AppCompatEditText {
                 if (!s.toString().equals(current)) {
                     editText.removeTextChangedListener(this);
 
-                    String cleanString = s.toString().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
+                    String cleanString = s.toString().replaceAll("[$,.]", "").replaceAll(currency, "").replaceAll("\\s+", "");
 
                     if (cleanString.length() != 0) {
                         try {
 
                             String currencyFormat = "";
-                            if (Spacing) {
-                                if (Delimiter) {
-                                    currencyFormat = Currency + ". ";
+                            if (spacing) {
+                                if (delimiter) {
+                                    currencyFormat = currency + ". ";
                                 } else {
-                                    currencyFormat = Currency + " ";
+                                    currencyFormat = currency + " ";
                                 }
                             } else {
-                                if (Delimiter) {
-                                    currencyFormat = Currency + ".";
+                                if (delimiter) {
+                                    currencyFormat = currency + ".";
                                 } else {
-                                    currencyFormat = Currency;
+                                    currencyFormat = currency;
                                 }
                             }
 
@@ -78,7 +96,7 @@ public class CurrencyEditText extends AppCompatEditText {
                             int parsedInt;
                             String formatted;
 
-                            if (Decimals) {
+                            if (decimals) {
                                 parsed = Double.parseDouble(cleanString);
                                 formatted = NumberFormat.getCurrencyInstance().format((parsed / 100)).replace(NumberFormat.getCurrencyInstance().getCurrency().getSymbol(), currencyFormat);
                             } else {
@@ -88,10 +106,10 @@ public class CurrencyEditText extends AppCompatEditText {
 
                             current = formatted;
 
-                            //if decimals are turned off and Separator is set as anything other than commas..
-                            if (!Separator.equals(",") && !Decimals) {
+                            //if decimals are turned off and separator is set as anything other than commas..
+                            if (!separator.equals(",") && !decimals) {
                                 //..replace the commas with the new separator
-                                editText.setText(formatted.replaceAll(",", Separator));
+                                editText.setText(formatted.replaceAll(",", separator));
                             } else {
                                 //since no custom separators were set, proceed with comma separation
                                 editText.setText(formatted);
@@ -101,14 +119,12 @@ public class CurrencyEditText extends AppCompatEditText {
 
                         }
                     }
-
                     editText.addTextChangedListener(this);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-
             }
         });
     }
@@ -118,10 +134,10 @@ public class CurrencyEditText extends AppCompatEditText {
      */
     public double getCleanDoubleValue() {
         double value = 0.0;
-        if (Decimals) {
-            value = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(Currency, ""));
+        if (decimals) {
+            value = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(currency, ""));
         } else {
-            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
+            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(currency, "").replaceAll("\\s+", "");
             try {
                 value = Double.parseDouble(cleanString);
             } catch (NumberFormatException e) {
@@ -133,44 +149,56 @@ public class CurrencyEditText extends AppCompatEditText {
 
     public int getCleanIntValue() {
         int value = 0;
-        if (Decimals) {
-            double doubleValue = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(Currency, ""));
+        if (decimals) {
+            double doubleValue = Double.parseDouble(editText.getText().toString().trim().replaceAll("[$,]", "").replaceAll(currency, ""));
             value = (int) Math.round(doubleValue);
         } else {
-            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(Currency, "").replaceAll("\\s+", "");
+            String cleanString = editText.getText().toString().trim().replaceAll("[$,.]", "").replaceAll(currency, "").replaceAll("\\s+", "");
             try {
                 value = Integer.parseInt(cleanString);
             } catch (NumberFormatException e) {
-
             }
         }
         return value;
     }
 
     public void setDecimals(boolean value) {
-        this.Decimals = value;
+        this.decimals = value;
     }
 
     public void setCurrency(String currencySymbol) {
-        this.Currency = currencySymbol;
+        this.currency = getCurrencySymbol(currencySymbol);
     }
 
     public void setSpacing(boolean value) {
-        this.Spacing = value;
+        this.spacing = value;
     }
 
     public void setDelimiter(boolean value) {
-        this.Delimiter = value;
+        this.delimiter = value;
     }
 
     /**
-     * Separator allows a custom symbol to be used as the thousand separator. Default is set as comma (e.g: 20,000)
+     * separator allows a custom symbol to be used as the thousand separator. Default is set as comma (e.g: 20,000)
      * <p>
-     * Custom Separator cannot be set when Decimals is set as `true`. Set Decimals as `false` to continue setting up custom separator
+     * Custom separator cannot be set when decimals is set as `true`. Set decimals as `false` to continue setting up custom separator
      *
      * @value is the custom symbol sent in place of the default comma
      */
     public void setSeparator(String value) {
-        this.Separator = value;
+        this.separator = value;
+    }
+
+    public String getCurrencySymbol(String currency) {
+        try {
+            String sJSON = CurrencyUtils.getJsonFromAssets(mContext);
+            JSONObject jsonObject = new JSONObject(sJSON);
+            JSONObject jsonObjectCountry = jsonObject.getJSONObject(currency);
+            String currencySymbol = jsonObjectCountry.getString("symbolNative");
+            return currencySymbol;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

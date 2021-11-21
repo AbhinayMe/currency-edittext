@@ -1,1 +1,3 @@
-include ':library', ':sample'
+include ':sample-kotlin'
+include ':sample-java'
+include ':CurrencyEditText'

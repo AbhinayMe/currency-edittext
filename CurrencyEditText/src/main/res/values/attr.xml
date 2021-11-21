@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CurrencyEditText">
+        <attr name="currency" format="string" />
+        <attr name="delimiter" format="boolean" />
+        <attr name="spacing" format="boolean" />
+        <attr name="decimals" format="boolean" />
+        <attr name="separator" format="boolean" />
+    </declare-styleable>
+</resources>
