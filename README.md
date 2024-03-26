@@ -1,12 +1,10 @@
 [![Download](https://api.bintray.com/packages/abhinayme/currency-edittext/me.abhinay.input/images/download.svg) ](https://bintray.com/abhinayme/currency-edittext/me.abhinay.input/_latestVersion)
-[![Build Status](https://travis-ci.org/AbhinayMe/currency-edittext.svg?branch=master)](https://travis-ci.org/AbhinayMe/currency-edittext)
 [![License](https://img.shields.io/badge/license-Apache%202-4EB1BA.svg?)](https://www.apache.org/licenses/LICENSE-2.0.html)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Currency--Edittext-yellow.svg?style=flat)](https://android-arsenal.com/details/1/7448)
-
 
 
 # Currency-Edittext
- A Custom EditText implementation that allows formatting of currency-based numeric inputs.
+This project is a fork of the original [currency-edittext](https://github.com/AbhinayMe/currency-edittext) repository by [Abhinay Me](https://github.com/AbhinayMe).
+A Custom EditText implementation that allows formatting of currency-based numeric inputs.
 
 ![Alt text](/samplegif.gif "Currency-Edittext Input Demo")
 
@@ -15,7 +13,7 @@
 Add this in your app's build.gradle file:
 ```groovy
 dependencies {
-  implementation 'me.abhinay.input:currency-edittext:1.1'
+  implementation 'com.github.joelarmah:currency-edittext:1.0'
 }
 ```
 
