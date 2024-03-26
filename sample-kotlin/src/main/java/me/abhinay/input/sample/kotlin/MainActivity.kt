@@ -12,10 +12,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
-    val TAG: String = MainActivity::class.java.getSimpleName()
+
     private lateinit var mActivity: Activity
     private lateinit var mContext: Context
     private lateinit var viewBinding: ActivityMainBinding
+
+    companion object {
+        private val TAG: String = MainActivity::class.java.simpleName
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
